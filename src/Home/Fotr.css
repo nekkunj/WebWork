@@ -1,0 +1,20 @@
+.footer-class >div{
+    margin:15px
+}
+.footer-class{
+    margin:10px;
+    text-align: left;
+}
+.dot {
+    height: 25px;
+    width: 25px;
+    /* background-color: #bbb; */
+    border:1px solid black;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+.transition-col{
+    transition: all 0.2s ease-in-out;
+}

@@ -1,0 +1,13 @@
+
+@media (max-width:500px) {
+    .menunavbar{
+        display: none;
+    }
+
+}
+
+@media (min-width:500px) {
+    .menuButton{
+        display: none;
+    }
+}
