@@ -1,0 +1,183 @@
+import { DeleteOutlined, EditOutlined, Loading3QuartersOutlined, LoadingOutlined, PlusCircleOutlined, PlusOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Empty, Row, Select, Spin,notification } from "antd"
+import { useEffect, useState } from "react";
+import './Users_List_Card.css'
+import AddUserModal from "./AddUserModal";
+import { deleteOrganizationAdmin, setOrganizationAdminDuplicacyToNull } from "../state/new actions/organizationAction";
+import { RootState } from "../state/reducers";
+import { connect } from "react-redux";
+import {v4 as uuidv4} from 'uuid';
+import { useLogoutRedirect, useToken } from "../utils/getToken";
+interface IUsers_List_Card{
+  cardData:{ userEmail: string; createdOn: string; userRole: string; }[],
+  usersList:object[] | null,
+  orgName:string,
+  orgId:string,
+  prevStep:()=>void,
+  nextStep:(value:any)=>void,
+  prevStepExists:boolean,
+  nextStepExist:boolean,
+  organizationUpdateSuccess:boolean,
+  organizationUpdateInProgress:boolean,
+}
+
+
+
+
+
+
+function DateComponent(mongoDbDate:string){
+  // Assuming createdAt is a Date object fetched from MongoDB
+  const createdAt: Date = new Date(mongoDbDate);
+
+  // Get the local time zone offset in minutes
+  const timeZoneOffset: number = new Date().getTimezoneOffset();
+
+  // Apply the offset to get the local time
+  const localTime: Date = new Date(createdAt.getTime() - timeZoneOffset * 60000);
+
+  // Convert the local time to a string representation
+  //toLocaleString for date and time
+  //toLocaleDateString for just date
+  const localDateTimeString: string = localTime.toLocaleDateString();
+
+return(
+<div>{localDateTimeString}</div>
+)
+}
+
+
+function Users_List_Card({cardData,orgName,orgId,prevStep,nextStep,prevStepExists,nextStepExist,...props}:IUsers_List_Card){
+    const [AssignedUsers, setAssignedusers] = useState(cardData); // An array containing card data
+    const [addUserDialog_isOpen,setAddUserDialog_isOpen]=useState(false)
+    const getToken=useToken()
+    const handleLogoutRedirect=useLogoutRedirect()
+  
+
+    const handleAddUser=(userEmail:string)=>{
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    // today = mm + '-' + dd + '-' + yyyy;
+      const obj:{ userEmail: string; createdOn: string; userRole: string; }={
+        userEmail:userEmail,
+        createdOn:String(today),
+        userRole:'Organization Admin'
+
+      }
+      const newData=[obj,...AssignedUsers]
+      setAssignedusers(newData)
+
+    }
+    const handleDelete = async(index:number) => {
+      const updatedCardData = [...AssignedUsers];
+      await deleteOrganizationAdmin(AssignedUsers[index],orgName,getToken(),handleLogoutRedirect)
+      updatedCardData.splice(index, 1);
+      setAssignedusers(updatedCardData);
+      
+    };
+    function previousStep(){
+      prevStep()
+    }
+    const handleRoleChange=(index:number,role:string)=>{
+      const updatedCardData = [...AssignedUsers];
+      updatedCardData[index].userRole=role;
+      setAssignedusers(updatedCardData);
+    }
+    const handleAddUserDialogOpen=()=>{
+      setAddUserDialog_isOpen(true)
+      setOrganizationAdminDuplicacyToNull()
+    };
+    const handleAddUserDialogClose=()=>{
+      setAddUserDialog_isOpen(false)
+    };
+
+
+    useEffect(()=>{
+      if(props.organizationUpdateSuccess){
+        notification.success({
+          message: 'Changes done Successfully',
+        });
+      }
+    },[props.organizationUpdateSuccess])
+
+    
+
+
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin /> 
+    return(
+        <fieldset style={{backgroundColor:'white',borderRadius:'10px',padding:'10px',margin:'0 auto',width:'80%'}}>
+          <legend style={{fontSize:'20px'}}>Users List</legend>
+        <Row justify={"center"} align={'top'} style={{ display:'flex',alignItems:'flex-start',alignContent:'flex-start', height: '65vh', overflow: 'auto',paddingRight:'1vw'}}>
+              <Col xs={24} style={{textAlign:'left'}}>
+                <h3>Organization Admins</h3>
+              </Col>
+                <Col xs={24} lg={20}>
+                  <div className="add-card" onClick={handleAddUserDialogOpen}>
+                    <PlusOutlined style={{fontSize:24}}/>
+                    Add new Organization Admin
+                  </div>
+                </Col>
+                {AssignedUsers.length==0 && <Col xs={24} lg={20} style={{marginTop:'13vh'}} >
+              <Empty 
+              // image={<><FolderOpenOutlined style={{fontSize:70,color:'#1677ff'}}/></>}
+              imageStyle={{ height: 70 }}
+              style={{fontSize:'20px'}}
+              description={
+                <div>
+                  No Organization Admin
+                  <br/>
+                  Add a Organization Admin first to see the results
+                </div>
+              }
+              />
+              </Col>}
+            {props.organizationUpdateInProgress==true && <Col xs={24} lg={20}><Spin indicator={antIcon}/></Col>}
+            {props.organizationUpdateInProgress==false && AssignedUsers.map((card,index)=>(
+                <Col xs={24} lg={20} > 
+                <Card key={index} style={{marginBottom:'5px',padding:'0px',border:'1px solid lightgray'}} >
+                    <Row justify={"start"} align={"middle"} >
+                        <Col xs={2} lg={2}><UserOutlined /></Col>
+                        <Col xs={24} md={14}  style={{fontSize:15,textAlign:'left'}}> <b>{card.userEmail}</b></Col>
+                        <Col xs={24} md={8} lg={6}>{DateComponent(card.createdOn)}</Col>
+                        <Col xs={1} md={1} style={{marginLeft:'auto'}}>
+                            <DeleteOutlined data-testid="delete-user-0" style={{color:'red',fontSize:'20px',marginRight:'5px'}} onClick={() => handleDelete(index)}/>
+                        </Col>
+                    </Row>
+                    
+                </Card>
+                </Col>
+            ))}
+        </Row>
+        <Row justify={'end'}>
+                { prevStepExists && <Col xs={4} style={{marginTop:'20px'}}>
+                <div style={{ textAlign: 'right' }} >
+                    <Button type="primary" htmlType="submit" onClick={previousStep} style={{width:'113px'}}>
+                         Prev 
+                    </Button> 
+                  </div>
+                </Col>}
+                { nextStepExist && <Col xs={4} style={{marginTop:'20px'}}>
+                <div style={{ textAlign: 'right' }} >
+                    <Button type="primary"  href="/?id=4" style={{width:'113px'}}>
+                        Close
+                    </Button> 
+                  </div>
+                </Col>}
+            </Row>
+        {addUserDialog_isOpen && <AddUserModal handleAddUser={handleAddUser} orgName={orgName} orgId={orgId} usersList={cardData} isOpen={addUserDialog_isOpen} handleClose={handleAddUserDialogClose} />}
+        </fieldset>
+    )
+}
+const mapStateToProps = (state: RootState) => {
+  return {
+    organizationUpdateInProgress:state.OrganizationFetchReducer.organizationUpdateInProgress,
+    organizationUpdateSuccess:state.OrganizationFetchReducer.organizationUpdateSuccess,
+    usersList:state.OrganizationFetchReducer.usersList,
+  };
+};
+
+export default connect(mapStateToProps)(Users_List_Card)
+// export default Users_List_Card

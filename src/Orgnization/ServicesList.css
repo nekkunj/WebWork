@@ -1,0 +1,79 @@
+.add-service-card{
+    margin-bottom:5px;
+    /* padding:0px; */
+    background-color:transparent;
+    border:1px dashed black;
+    height:45px;
+    margin: 2%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+:where(.css-dev-only-do-not-override-byeoj0).ant-tabs .ant-tabs-tab.ant-tabs-tab-disabled{
+    cursor: default;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
+:where(.css-dev-only-do-not-override-byeoj0).ant-tabs .ant-tabs-tab-btn{
+    width: 100%;
+}
+
+:where(.css-byeoj0).ant-tabs .ant-tabs-tab.ant-tabs-tab-disabled{
+    cursor: default;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+}
+:where(.css-byeoj0).ant-tabs .ant-tabs-tab.ant-tabs-tab-disabled div{
+    width: 100%;
+}
+
+
+.tab-heading-div{
+    padding-right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tab-div{
+    text-align: left;
+
+}
+.tab-body-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+}
+
+:where(.css-dev-only-do-not-override-byeoj0).ant-tabs .ant-tabs-tab.ant-tabs-tab div{
+    width: 100%;
+    padding-right:0px;
+}
+:where(.css-dev-only-do-not-override-byeoj0).ant-tabs-left >.ant-tabs-nav .ant-tabs-tab+.ant-tabs-tab{
+    padding-right:0px
+}
+:where(.css-dev-only-do-not-override-byeoj0).ant-tabs .ant-tabs-tab.ant-tabs-tab-disabled{
+    padding-right:0px
+
+}
+
+:where(.css-byeoj0).ant-tabs .ant-tabs-tab.ant-tabs-tab div{
+    width: 100%;
+    padding-right:0px;
+}
+:where(.css-byeoj0).ant-tabs-left >.ant-tabs-nav .ant-tabs-tab+.ant-tabs-tab{
+    padding-right:0px
+}
+:where(.css-byeoj0).ant-tabs .ant-tabs-tab.ant-tabs-tab-disabled{
+    padding-right:0px
+
+}
+.popup-iframe {
+    margin-top: 3vh;
+    width: 95vw;
+    height: 90vh;
+  }
