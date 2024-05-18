@@ -1,0 +1,18 @@
+.add-service-card-project{
+    margin-bottom:5px;
+    /* padding:0px; */
+    background-color:transparent;
+    border:1px dashed black;
+    margin:2%;
+    height:260px;
+    border-radius: 8px;
+    flex-direction: column;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.add-service-card-project:hover{
+    box-shadow: 2px 2px gray;
+}

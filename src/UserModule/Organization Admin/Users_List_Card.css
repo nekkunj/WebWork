@@ -1,0 +1,15 @@
+:where(.css-dev-only-do-not-override-ed5zg0).ant-card  .ant-card-body{
+    padding:10px
+}
+ .add-card{
+    margin-bottom:5px;
+    /* padding:0px; */
+    background-color:transparent;
+    border:1px dashed black;
+    height:45px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
