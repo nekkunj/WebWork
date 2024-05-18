@@ -1,0 +1,20 @@
+export const serviceSaveInProgress="serviceSaveInProgress"
+export const serviceDetailsSaveSuccess="serviceDetailsSaveSuccess"
+export const serviceParamtersInProgress="serviceParamtersInProgress"
+export const serviceDetailsSaveFailure="serviceDetailsSaveFailure"
+
+export const fetchServiceDetails_InProgress="fetchServiceDetails_InProgress"
+export const fetchServiceDetails_Success="fetchServiceDetails_Success"
+export const fetchServiceDetails_Fail="fetchServiceDetails_Fail"
+
+export const updatingServiceDetails_InProgress="updatingServiceDetails_InProgress"
+export const updatingServiceDetails_Success="updatingServiceDetails_Success"
+export const updatingServiceDetails_Fail="updatingServiceDetails_Fail"
+
+
+export const deleteService_InProgress="deleteService_InProgress"
+export const deleteService_Success="deleteService_Success"
+export const deleteService_Fail="deleteService_Fail"
+
+
+export const createService_Duplicacy="createService_Duplicacy"

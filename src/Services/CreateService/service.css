@@ -1,0 +1,4 @@
+.disable-click .ant-steps-item:not(.ant-steps-item-process) {
+    pointer-events: none;
+    cursor: default;
+  }

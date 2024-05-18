@@ -1,0 +1,21 @@
+export const fetchingUserManagementDetails_InProgress="fetchingUserManagementDetails_InProgress"
+export const fetchingUserManagementDetails_Success="fetchingUserManagementDetails_Success"
+
+export const fetchingOrganizationNames_Details_InProgress="fetchingOrganizationNames_Details_InProgress"
+export const fetchingOrganizationNames_Details_Success="fetchingOrganizationNames_Details_Success"
+
+export const fetchingUserManagementDetails_Fail="fetchingUserManagementDetails_Fail"
+
+export const deletingUser_InProgress="deletingUser_InProgress"
+export const deletingUser_Success="deletingUser_Success"
+export const deletingUser_Fail="deletingUser_InProgress"
+
+export const changeUserRole_InProgress="changeUserRole_InProgress"
+export const changeUserRole_Success="changeUserRole_Success"
+export const changeUserRole_Fail="changeUserRole_InProgress"
+
+export const addUser_InProgress="addUser_InProgress"
+export const addUser_Success="addUser_Success"
+export const addUser_Fail="addUser_InProgress"
+export const addUser_Duplicacy="addUser_Duplicacy"
+

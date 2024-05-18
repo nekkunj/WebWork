@@ -1,0 +1,54 @@
+export const fetchingOrganizationDetails="fetchingOrganizationDetails"
+export const fetchOrganization_Admin_AssignedService_Details_InProgress="fetchOrganization_Admin_AssignedService_Details_InProgress"
+export const organizationDetailsSuccess="organizationDetailsSuccess"
+export const fetchOrganization_Admin_AssignedService_Details_Success="fetchOrganization_Admin_AssignedService_Details_Success"
+export const fetchOrganization_General_Admin_AssignedService_Details_Success="fetchOrganization_General_Admin_AssignedService_Details_Success"
+
+export const organizationDetailsFetchFail="organizationDetailsFetchFail"
+export const updatingOrganizationDetails="updatingOrganizationDetails"
+export const updateOrganizationDetailsSuccess="updateOrganizationDetailsSuccess"
+export const updateOrganizationDetailsFail="updateOrganizationDetailsFail"
+
+
+export const setOrganizationDetailsSucessToFalse="setOrganizationDetailsSucessToFalse"
+
+export const updatingOrganizationServiceDetails="updatingOrganizationServiceDetails"
+export const updateOrganizationServiceDetailsSuccess="updateOrganizationServiceDetailsSuccess"
+export const updateOrganizationServiceDetailsFail="updateOrganizationServiceDetailsFail"
+
+
+export const fetchingUnassignedServices="fetchingUnassignedServices"
+export const UnassignedServicesFetchSuccess="UnassignedServicesFetchSuccess"
+export const UnassignedServicesFetch_Fail="UnassignedServicesFetch_Fail"
+
+
+export const assignServiceSave_InProgress="assignServiceSave_InProgress"
+export const assignServiceSave_Success="assignServiceSave_Success"
+export const assignServiceSave_Fail="assignServiceSave_Fail"
+
+
+export const addOrganizationAdmin_InProgress="addOrganizationAdmin_InProgress"
+export const addOrganizationAdmin_Success="addOrganizationAdmin_Success"
+export const addOrganizationAdmin_Fail="addOrganizationAdmin_Fail"
+export const addOrganizationAdmin_Duplicacy="addOrganizationAdmin_Duplicacy"
+
+export const deleteOrganizationAdmin_InProgress="deleteOrganizationAdmin_InProgress"
+export const deleteOrganizationAdmin_Success="deleteOrganizationAdmin_Success"
+export const deleteOrganizationAdmin_Fail="deleteOrganizationAdmin_Fail"
+
+export const deleteOrganization_InProgress="deleteOrganization_InProgress"
+export const deleteOrganization_Success="deleteOrganization_Success"
+export const deleteOrganization_Fail="deleteOrganization_Fail"
+
+
+export const createOrganization_InProgress="createOrganization_InProgress"
+export const createOrganization_Success="createOrganization_Success"
+export const createOrganization_Fail="createOrganization_Fail"
+
+export const setOrganizationNameDuplicacyToNull="setOrganizationNameDuplicacyToNull"
+
+export const assignServiceDelete_InProgress="assignServiceDelete_InProgress"
+export const assignServiceDelete_Success="assignServiceDelete_Success"
+export const assignServiceDelete_Fail="assignServiceDelete_Fail"
+
+export const createOrganization_Duplicacy="createOrganization_Duplicacy"
